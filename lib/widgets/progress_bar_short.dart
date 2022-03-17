@@ -19,9 +19,6 @@ class ProgressBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(13),
         child: Container(
             width: constraint.maxWidth / 2 - 5,
-
-            // constraint.maxWidth provide us the available with for this widget
-            // padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(13),

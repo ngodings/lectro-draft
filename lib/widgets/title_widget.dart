@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lectro_draft/constants.dart';
 
 class TitleView extends StatelessWidget {
   final String? titleTxt;
@@ -26,7 +25,7 @@ class TitleView extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontSize: 18,
                 letterSpacing: 0.5,
-                color: kTitleTextColor,
+                color: Colors.black54,
               ),
             ),
           ),

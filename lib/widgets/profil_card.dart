@@ -84,8 +84,8 @@ class ProfilCard extends StatelessWidget {
                       InkWell(
                         onTap: press,
                         child: const Icon(
-                          FontAwesomeIcons.infoCircle,
-                          color: kTextColor,
+                          FontAwesomeIcons.cogs,
+                          color: darkGreen,
                         ),
                       )
                       // if (email.isAttachmentAvailable)

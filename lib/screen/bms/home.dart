@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:lectro_draft/constants.dart';
+import 'package:lectro_draft/screen/home/main_dashboard.dart';
 import 'package:lectro_draft/widgets/monitor.dart';
 import 'package:lectro_draft/widgets/profil_card.dart';
 import 'package:lectro_draft/widgets/progress_bar.dart';
@@ -15,6 +17,15 @@ class BMSHome extends StatefulWidget {
 }
 
 class _BMSHomeState extends State<BMSHome> {
+  List<String> listitems = [
+    "Device 1",
+    "Device 2",
+    "Device 3",
+    "Device 4",
+    "Device 5",
+    "Device 6"
+  ];
+  String selectval = "Device 1";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,7 +57,7 @@ class _BMSHomeState extends State<BMSHome> {
                   ),
                   AspectRatio(
                     aspectRatio: 2.0,
-                    child: Image.asset('assets/images/welcome.png'),
+                    child: Image.asset('assets/images/home.png'),
                   ),
                 ],
               ),
@@ -103,9 +114,43 @@ class _BMSHomeState extends State<BMSHome> {
                             images: "assets/images/p1.jpg",
                             titleCard: "Profil",
                             titleText: "User Beta",
-                            subText: "username",
+                            subText: "device",
                             status: "Active",
-                            press: () {},
+                            press: () {
+                              AwesomeDialog(
+                                context: context,
+                                animType: AnimType.SCALE,
+                                dialogType: DialogType.INFO,
+                                keyboardAware: true,
+                                //btnOkOnPress: () {},
+                                body: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        'Form Data',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6,
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      buildSelect(),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      AnimatedButton(
+                                          isFixedHeight: false,
+                                          text: 'Submit',
+                                          pressEvent: () {
+                                            Navigator.pop(context, false);
+                                          })
+                                    ],
+                                  ),
+                                ),
+                              ).show();
+                            },
                           ),
                         ),
                         const TitleView(
@@ -180,19 +225,26 @@ class _BMSHomeState extends State<BMSHome> {
             Positioned(
               top: (MediaQuery.of(context).size.width / 1.2) - 24.0 - 105,
               right: 35,
-              child: Card(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50.0)),
-                elevation: 10.0,
-                child: const SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: Center(
-                    child: Icon(
-                      Icons.home,
-                      color: darkGreen,
-                      size: 30,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (_) => const MainDashboard()),
+                  );
+                },
+                child: Card(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0)),
+                  elevation: 10.0,
+                  child: const SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: Center(
+                      child: Icon(
+                        FontAwesomeIcons.arrowCircleLeft,
+                        color: darkGreen,
+                        size: 30,
+                      ),
                     ),
                   ),
                 ),
@@ -201,6 +253,34 @@ class _BMSHomeState extends State<BMSHome> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildSelect() {
+    return DropdownButtonFormField<String>(
+      value: selectval,
+      decoration: InputDecoration(
+        labelText: "Device",
+        labelStyle: const TextStyle(color: darkGreen),
+        hintStyle: const TextStyle(color: Colors.grey),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.blue, width: 1.0),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.grey, width: 1.0),
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      style: const TextStyle(color: Colors.black87),
+      items: listitems.map((itemone) {
+        return DropdownMenuItem(value: itemone, child: Text(itemone));
+      }).toList(),
+      onChanged: (value) {
+        setState(() {
+          selectval = value.toString();
+        });
+      },
     );
   }
 }

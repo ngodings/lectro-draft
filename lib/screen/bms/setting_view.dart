@@ -43,7 +43,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 AspectRatio(
                   aspectRatio: 2.0,
-                  child: Image.asset('assets/images/welcome.png'),
+                  child: Image.asset('assets/images/setting.png'),
                 ),
               ],
             ),

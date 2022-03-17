@@ -55,7 +55,7 @@ class SpinBoxWidget extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           fontSize: 18,
                           letterSpacing: 0.5,
-                          color: Colors.black54,
+                          color: darkGreen,
                         ),
                       ),
                       SpinBox(

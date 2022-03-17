@@ -42,7 +42,7 @@ class _MonitorScreenState extends State<MonitorScreen> {
                   ),
                   AspectRatio(
                     aspectRatio: 2.0,
-                    child: Image.asset('assets/images/welcome.png'),
+                    child: Image.asset('assets/images/monitoring.png'),
                   ),
                 ],
               ),

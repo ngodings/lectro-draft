@@ -28,8 +28,6 @@ class _MonitorState extends State<Monitor> {
         child: Container(
             width: constraint.maxWidth / 2 - 10,
             height: 210,
-            // constraint.maxWidth provide us the available with for this widget
-            // padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(13),
@@ -91,9 +89,6 @@ class _MonitorState extends State<Monitor> {
                             ),
                           ],
                         ),
-                        // const SizedBox(
-                        //   height: 16,
-                        // ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Stack(
