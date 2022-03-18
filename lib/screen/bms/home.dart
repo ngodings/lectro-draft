@@ -57,7 +57,7 @@ class _BMSHomeState extends State<BMSHome> {
                   ),
                   AspectRatio(
                     aspectRatio: 2.0,
-                    child: Image.asset('assets/images/home.png'),
+                    child: Image.asset('assets/images/welcome.png'),
                   ),
                 ],
               ),
@@ -110,46 +110,32 @@ class _BMSHomeState extends State<BMSHome> {
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 16, right: 16, bottom: 10),
-                          child: ProfilCard(
-                            images: "assets/images/p1.jpg",
-                            titleCard: "Profil",
-                            titleText: "User Beta",
-                            subText: "device",
+                          child: StatusWidget(
+                            images: "assets/images/battery-green.png",
+                            titleCard: "SOH",
+                            titleText: "had error code 1",
                             status: "Active",
                             press: () {
                               AwesomeDialog(
-                                context: context,
-                                animType: AnimType.SCALE,
-                                dialogType: DialogType.INFO,
-                                keyboardAware: true,
-                                //btnOkOnPress: () {},
-                                body: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(
-                                        'Form Data',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline6,
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      buildSelect(),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      AnimatedButton(
-                                          isFixedHeight: false,
-                                          text: 'Submit',
-                                          pressEvent: () {
-                                            Navigator.pop(context, false);
-                                          })
-                                    ],
-                                  ),
-                                ),
-                              ).show();
+                                      context: context,
+                                      animType: AnimType.LEFTSLIDE,
+                                      headerAnimationLoop: false,
+                                      dialogType: DialogType.ERROR,
+                                      showCloseIcon: true,
+                                      title: 'Error Code',
+                                      desc: 'Overcharging!',
+                                      btnCancelIcon: Icons.cancel,
+                                      btnCancelOnPress: () {},
+                                      btnCancelText: "OK"
+                                      // btnOkOnPress: () {},
+                                      // btnOkIcon: Icons.check_circle,
+                                      // onDissmissCallback: (type) {
+                                      //   debugPrint(
+                                      //       'Dialog Dissmiss from callback $type');
+                                      // },
+                                      )
+                                  .show();
+                              ;
                             },
                           ),
                         ),
@@ -163,6 +149,12 @@ class _BMSHomeState extends State<BMSHome> {
                             spacing: 20,
                             runSpacing: 20,
                             children: const <Widget>[
+                              Monitor(
+                                title: "Percentage",
+                                batasAtas: 100,
+                                batasBawah: 500,
+                                satuan: "%",
+                              ),
                               Monitor(
                                 title: "Power",
                                 batasAtas: 100,
@@ -180,12 +172,6 @@ class _BMSHomeState extends State<BMSHome> {
                                 batasAtas: 250,
                                 batasBawah: 500,
                                 satuan: "Volt",
-                              ),
-                              Monitor(
-                                title: "Percentage",
-                                batasAtas: 100,
-                                batasBawah: 500,
-                                satuan: "%",
                               ),
                             ],
                           ),

@@ -114,3 +114,99 @@ class ProfilCard extends StatelessWidget {
     );
   }
 }
+
+class StatusWidget extends StatelessWidget {
+  final String? images;
+  final String? titleCard;
+  final String? titleText;
+  final String? status;
+  final VoidCallback? press;
+
+  const StatusWidget({
+    Key? key,
+    this.images,
+    this.titleCard,
+    this.titleText,
+    this.status,
+    this.press,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(kDefaultPadding / 2),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                bottomLeft: Radius.circular(8.0),
+                bottomRight: Radius.circular(8.0),
+                topRight: Radius.circular(8.0)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  offset: const Offset(1.1, 1.1),
+                  blurRadius: 10.0),
+            ],
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Image.asset(
+                    "$images",
+                    width: 60,
+                    height: 60,
+                  ),
+                  const SizedBox(width: kDefaultPadding / 2),
+                  Expanded(
+                    child: Text.rich(
+                      TextSpan(
+                        text: "$titleCard \n",
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF52796F),
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "$titleText",
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "$status",
+                        style: Theme.of(context).textTheme.caption!.copyWith(
+                              color: Colors.grey,
+                            ),
+                      ),
+                      const SizedBox(height: 5),
+                      InkWell(
+                        onTap: press,
+                        child: const Icon(
+                          FontAwesomeIcons.infoCircle,
+                          color: darkGreen,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
