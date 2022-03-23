@@ -16,9 +16,6 @@ class MainDashboard extends StatefulWidget {
 }
 
 class _MainDashboardState extends State<MainDashboard> {
-  // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables
-  var SvgPicture;
-
   @override
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size;
