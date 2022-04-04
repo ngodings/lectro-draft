@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lectro_draft/screen/home/hide_widget.dart';
 import 'package:lectro_draft/screen/home/main_dashboard.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MainDashboard(),
+      home: const WidgetHideShowExample(),
     );
   }
 }
